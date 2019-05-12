@@ -1,0 +1,284 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(155.62deg, #414141 0.53%, #1D1D1D 98.98%);
+    min-height: 100vh;
+    font-family: Roboto;
+    overflow-x: hidden;
+}
+
+.main-container{
+    position: relative;
+}
+
+.room-slider{
+    position: relative;
+    width: 100vw;
+    overflow: hidden;
+    padding-top: 80px;
+    transition: all .3s linear;
+}
+
+.room-slider.open > .back{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: url("/images/back.png");
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 30px;
+    background-size: contain;
+}
+
+.room-slider > .next,
+.room-slider > .prev{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 100px;
+    color: rgba(255, 255, 255, 0.44);
+    top: 0;
+    height: 100%;
+    width: 100px;
+    cursor: pointer;
+}
+
+.room-slider.open > .next,
+.room-slider.open > .prev{
+    display: none;
+}
+
+.room-slider > .next:hover,
+.room-slider > .prev:hover{
+    background: #a8a8a824;
+}
+
+.room-slider > .next{
+    position: absolute;
+    right: 0;
+}
+
+.room-slider > .prev{
+    position: absolute;
+}
+
+.room-slider.open{
+    padding-top: 0;
+}
+
+.card-wrapper{
+    display: flex;
+    width: min-content;
+    transition: transform .3s ease-out;
+}
+
+.card-wrapper.open  .room-card:not(.open){
+    opacity: 0;
+}
+
+.room-card{
+    width: 90vw;
+    transition: width .3s ease-out;
+}
+
+.room-card.open{
+    width: 100vw;
+}
+
+.card-content{
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-row-gap: 10px;
+    width: 85vw;
+    height: 85vmin;
+    position: relative;
+    margin: 0 auto;
+    transition: all .3s linear;
+}
+
+.card-content.open{
+    width: 100vw;
+    grid-template-rows: 1fr;
+}
+
+.room-name{
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.card-content.open > .room-name{
+    display: none;
+}
+
+.room-image{
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+.room-image > .name{
+    opacity: 0;
+    padding-top: 60px;
+    padding-left: 20px;
+    font-size: 40px;
+    letter-spacing: 0;
+    font-weight: bold;
+    color: white;
+    transition: all .4s linear;
+}
+
+.card-content.open > .room-image{
+    mask-image: linear-gradient(to top, transparent 5%, white);
+    -webkit-mask-image: linear-gradient(to top, transparent 5%, white);
+}
+
+.card-content.open > .room-image > .name{
+    opacity: 1;
+    letter-spacing: 5px;
+}
+
+.room-description{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    opacity: .7;
+}
+
+/* login-form */
+
+.login-form{
+    display: grid;
+    height: 100vh;
+    justify-content: center;
+    align-content: center;
+    grid-row-gap: 10px;
+}
+
+.login-form > input{
+    border: 0;
+    border-bottom: 2px solid #22b9ff;
+    background: transparent;
+    color: white;
+    font-size: 18px;
+    padding: 5px 0;
+    width: 250px;
+}
+
+.login-form > input::placeholder{
+    opacity: .4;
+}
+
+.login-form > button{
+    border: 0;
+    background: #22b9ff;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    border-radius: 30px;
+    padding: 10px;
+    margin-top: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-form > button:hover{
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.devices{
+    display: grid;
+    grid-row-gap: 20px;
+    padding: 5vw;
+    padding-top: 80px;
+    padding-bottom: 50vh;
+    justify-content: center;
+}
+
+.devices > .device{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas: "image name" "image value";
+    grid-column-gap: 10px;
+    background: #1b1b1b;
+    padding: 15px 10px;
+    box-shadow: 0 10px 16px #00000040;
+    animation: show 1.2s ease-in-out;
+}
+
+.device > .image{
+    filter: invert(100);
+    width: 20vw;
+    grid-area: image;
+}
+
+.device > .name{
+    color: white;
+    font-size: 20px;
+    grid-area: name;
+}
+
+.device > .value{
+    color: rgba(255, 255, 255, 0.51);
+    font-size: 16px;
+    grid-area: value;
+}
+
+.changer{
+    position: relative;
+    width: 50px;
+    height: 20px;
+    background: #ba1c1c;
+    border-radius: 20px;
+    box-shadow: inset 2px 2px 2px #00000073;
+    overflow: hidden;
+    transition: all .2s linear;
+}
+
+.changer.active{
+    background: #18d427;
+}
+
+.changer > .pointer{
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 100%;
+    align-self: center;
+    box-shadow: 0 0 5px #00000069;
+    top: calc((100% - 18px) /2);
+    right: calc(100% - 20px);
+    transition: all .2s linear;
+}
+
+.changer.active > .pointer{
+    right: 2px;
+}
+
+@keyframes show {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+@media (min-width: 500px){
+    .devices{
+        grid-template-columns: repeat(auto-fill, minmax(280px, 300px));
+        grid-column-gap: 20px;
+    }
+
+    .device > .image {
+        width: 80px;
+    }
+}
+
+@media (max-width: 1000px){
+    .room-slider > .next,
+    .room-slider > .prev{
+        display: none;
+    }
+}
